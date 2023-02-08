@@ -1,16 +1,14 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-import * as basicLightbox from "https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js";
 
 const gallery = document.querySelector(".gallery");
 const galleryMarkup = createGalleryCards(galleryItems);
 
 gallery.insertAdjacentHTML("beforeend", galleryMarkup);
-
 gallery.addEventListener("click", onGalleryClick);
 
-function createGalleryCards(galleryItems) {
-  return galleryItems
+function createGalleryCards(gallery) {
+  return gallery
     .map(({ preview, original, description }) => {
       return `
         <div class="gallery__item">
@@ -33,8 +31,9 @@ function onGalleryClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-  
+
   event.preventDefault();
+
   const onCloseModal = (event) => {
     const ESC_KEY = "Escape";
 
@@ -48,11 +47,11 @@ function onGalleryClick(event) {
       <img src="${event.target.dataset.source}" width="800" height="600">
     `,
     {
-      onShow: (instance) => {
+      onShow: () => {
         window.addEventListener("keydown", onCloseModal);
       },
 
-      onclose: (instance) => {
+      onclose: () => {
         window.removeEventListener("keydown", onCloseModal);
       }
     }
