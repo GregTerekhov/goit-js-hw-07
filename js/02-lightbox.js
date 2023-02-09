@@ -18,9 +18,7 @@ function createGalleryCards(gallery) {
     .join("");
 }
 
-let lightbox = new SimpleLightbox(".gallery__item");
-
-lightbox.on("show.simplelightbox", {
+let lightbox = new SimpleLightbox(".gallery__item", {
   captionDelay: 250,
   captionsData: "alt",
 });
