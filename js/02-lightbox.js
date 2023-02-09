@@ -21,12 +21,12 @@ function createGalleryCards(gallery) {
 
 function onGalleryClick(event) {
   event.preventDefault();
-  const lightbox = new SimpleLightbox(".gallery__item");
+  let lightbox = new SimpleLightbox(".gallery__item");
 
-  lightbox.on("show.simplelightbox", () => ({
+  lightbox.on("show.simplelightbox", {
     captionDelay: 250,
-    captionData: "alt",
-  }));
+    captionsData: "alt",
+  });
 }
 
 console.log(galleryItems);
